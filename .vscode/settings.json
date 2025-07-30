@@ -18,6 +18,7 @@
     "kiroAgent.trustedCommands": [
         "npm *",
         "mkdir *",
-        "findstr *"
+        "findstr *",
+        "git status"
     ]
 }
