@@ -29,42 +29,38 @@ async function dbConnect() {
   }
 
   if (cached.conn) {
+    console.log('Mevcut MongoDB bağlantısı kullanılıyor');
     return cached.conn;
   }
 
   if (!cached.promise) {
+    console.log('MongoDB URI kontrol ediliyor:', MONGODB_URI ? 'Mevcut' : 'Bulunamadı');
+    
     const opts = {
       bufferCommands: false,
       maxPoolSize: 10,
-      serverSelectionTimeoutMS: 5000,
+      serverSelectionTimeoutMS: 10000, // 10 saniye
       socketTimeoutMS: 45000,
       family: 4
     };
 
-    let retries = 3;
-    let lastError = null;
+    console.log('MongoDB bağlantı seçenekleri:', opts);
 
-    while (retries > 0) {
-      try {
-        console.log('MongoDB Atlas\'a bağlanmaya çalışılıyor...');
-        cached.promise = mongoose.connect(MONGODB_URI!, opts);
-        const mongooseInstance = await cached.promise;
-        console.log('MongoDB Atlas\'a başarıyla bağlandı!');
-        return mongooseInstance;
-      } catch (error) {
-        console.error(`MongoDB bağlantı hatası (${retries} deneme kaldı):`, error);
-        lastError = error;
-        retries--;
-        
-        if (retries > 0) {
-          console.log(`2 saniye sonra yeniden denenecek...`);
-          await new Promise(resolve => setTimeout(resolve, 2000));
-        }
-      }
+    try {
+      console.log('MongoDB Atlas\'a bağlanmaya çalışılıyor...');
+      cached.promise = mongoose.connect(MONGODB_URI!, opts);
+      const mongooseInstance = await cached.promise;
+      console.log('MongoDB Atlas\'a başarıyla bağlandı!');
+      return mongooseInstance;
+    } catch (error) {
+      console.error('MongoDB bağlantı hatası detayı:', {
+        message: error instanceof Error ? error.message : String(error),
+        name: error instanceof Error ? error.name : 'Unknown',
+        stack: error instanceof Error ? error.stack : undefined
+      });
+      cached.promise = null;
+      throw new Error(`MongoDB Atlas'a bağlanılamadı: ${error instanceof Error ? error.message : String(error)}`);
     }
-
-    cached.promise = null;
-    throw new Error(`MongoDB Atlas'a bağlanılamadı: ${lastError}`);
   }
 
   try {

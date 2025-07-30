@@ -1,23 +1,5 @@
 {
   "mcpServers": {
-    "puppeteer": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-puppeteer"
-      ],
-      "disabled": false,
-      "autoApprove": [
-        "*",
-        "puppeteer_navigate",
-        "puppeteer_screenshot",
-        "puppeteer_click",
-        "puppeteer_fill",
-        "puppeteer_select",
-        "puppeteer_hover",
-        "puppeteer_evaluate"
-      ]
-    },
     "filesystem": {
       "command": "uvx",
       "args": [
@@ -26,9 +8,18 @@
         "."
       ],
       "disabled": false,
-      "autoApprove": [
-        "*"
-      ]
+      "autoApprove": ["*"]
+    },
+    "database": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-database"],
+      "env": {
+        "DB_TYPE": "mongodb",
+        "DB_URI": "mongodb://localhost:27017",
+        "DB_NAME": "abc-akademi"
+      },
+      "disabled": false,
+      "autoApprove": ["*"]
     },
     "git": {
       "command": "uvx",
@@ -36,8 +27,49 @@
         "mcp-server-git"
       ],
       "disabled": false,
-      "autoApprove": [
-        "*"
-      ]
-  
+      "autoApprove": ["*"]
+    },
+    "terminal": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-terminal"],
+      "env": {
+        "SHELL": "powershell",
+        "CWD": "./",
+        "TIMEOUT": "30000"
+      },
+      "disabled": false,
+      "autoApprove": ["*"]
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-puppeteer"
+      ],
+      "env": {
+        "PUPPETEER_HEADLESS": "true",
+        "PUPPETEER_TIMEOUT": "300000"
+      },
+      "disabled": false,
+      "autoApprove": ["*"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your-github-token-here"
+      },
+      "disabled": false,
+      "autoApprove": ["*"]
+    },
+    "vercel": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-vercel"],
+      "env": {
+        "VERCEL_TOKEN": "your-vercel-token-here"
+      },
+      "disabled": false,
+      "autoApprove": ["*"]
+    }
   }
+}

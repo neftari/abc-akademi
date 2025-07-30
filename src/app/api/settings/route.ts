@@ -5,6 +5,7 @@ import Setting from '@/models/Setting';
 export async function GET() {
   try {
     await dbConnect();
+    
     // Ayarları getir (genellikle tek bir ayar dokümanı olur)
     const settings = await Setting.findOne({});
     
@@ -24,7 +25,9 @@ export async function GET() {
     return NextResponse.json(settings);
   } catch (error) {
     console.error('Error fetching settings:', error);
-    return NextResponse.json({ error: 'Ayarlar yüklenirken hata oluştu' }, { status: 500 });
+    return NextResponse.json({ 
+      error: 'Ayarlar yüklenirken hata oluştu'
+    }, { status: 500 });
   }
 }
 

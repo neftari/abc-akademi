@@ -1,22 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Course from '@/models/Course';
-import { withRateLimit, rateLimiters } from '@/lib/rate-limiter';
 
-async function getCourses() {
+export async function GET() {
   try {
     await dbConnect();
     const courses = await Course.find({}).sort({ createdAt: -1 });
     return NextResponse.json(courses);
   } catch (error) {
     console.error('Error fetching courses:', error);
-    return NextResponse.json({ error: 'Kurslar yüklenirken hata oluştu' }, { status: 500 });
+    return NextResponse.json({ 
+      error: 'Kurslar yüklenirken hata oluştu'
+    }, { status: 500 });
   }
 }
 
-export const GET = withRateLimit(rateLimiters.general)(getCourses);
-
-async function createCourse(request: NextRequest) {
+export async function POST(request: NextRequest) {
   try {
     await dbConnect();
     const body = await request.json();
@@ -48,6 +47,4 @@ async function createCourse(request: NextRequest) {
     }
     return NextResponse.json({ error: 'Kurs oluşturulurken hata oluştu' }, { status: 500 });
   }
-}
-
-export const POST = withRateLimit(rateLimiters.admin)(createCourse); 
+} 

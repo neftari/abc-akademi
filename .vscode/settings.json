@@ -13,12 +13,17 @@
         "workbench.editors.gettingStartedInput": true,
         "workbench.input.interactive": true
     },
-    "kiroAgent.agentAutonomy": "Supervised",
+    "kiroAgent.agentAutonomy": "Autopilot",
     "editor.columnSelection": true,
     "kiroAgent.trustedCommands": [
         "npm *",
         "mkdir *",
         "findstr *",
-        "git status"
-    ]
+        "git status",
+        "Get-Content \"~/.kiro/settings/mcp.json\" -Raw",
+        "New-Item *",
+        "Test-Path *"
+    ],
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.wordWrap": "on"
 }
