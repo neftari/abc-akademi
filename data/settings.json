@@ -1,0 +1,9 @@
+{
+  "siteName": "ABC Akademi",
+  "siteDescription": "Modern eğitim platformu",
+  "contactEmail": "info@abcakademi.com",
+  "twoFactorAuth": false,
+  "autoLogout": true,
+  "passwordComplexity": true,
+  "autoLogoutTime": 30
+}

@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\eski bilgisayar\\web sitesi\\2707\\abc-akademi-5.4\\logs\\.3f553f666e23d135fbaa8b62d29a88736692daec-audit.json",
+    "files": [
+        {
+            "date": 1753726169866,
+            "name": "D:\\eski bilgisayar\\web sitesi\\2707\\abc-akademi-5.4\\logs\\mcp-puppeteer-2025-07-28.log",
+            "hash": "9a602f6c519e6df182a227ffca9115c54c19c58955099cef12a07bac5f837fab"
+        }
+    ],
+    "hashType": "sha256"
+}

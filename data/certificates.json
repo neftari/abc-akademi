@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "studentName": "Ahmet Yılmaz",
+    "courseName": "React.js İleri Seviye",
+    "issueDate": "2024-01-20",
+    "status": "issued"
+  },
+  {
+    "id": "2",
+    "studentName": "Ayşe Demir",
+    "courseName": "Node.js Backend",
+    "issueDate": "2024-01-18",
+    "status": "pending"
+  },
+  {
+    "id": "3",
+    "studentName": "Mehmet Kaya",
+    "courseName": "Python Veri Analizi",
+    "issueDate": "2024-01-22",
+    "status": "issued"
+  }
+]

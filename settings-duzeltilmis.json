@@ -1,0 +1,35 @@
+{
+    "kiroAgent.agentAutonomy": "Autopilot",
+    "editor.experimental.treeSitterTelemetry": true,
+    "kiroAgent.enableTabAutocomplete": true,
+    "kiroAgent.trustedCommands": [
+        "npm run build",
+        "npm run dev",
+        "npm run test",
+        "npm run lint",
+        "npm run start",
+        "npm install",
+        "npm update",
+        "git add .",
+        "git commit",
+        "git push",
+        "git pull",
+        "all 'npm'",
+        "all 'git'",
+        "all 'node'",
+        "all 'npx'"
+    ],
+    "terminal.integrated.commandsToSkipShell": [
+        "all 'npm'",
+        "all 'git'",
+        "all 'node'"
+    ],
+    "kiroAgent.agentModelSelection": "CLAUDE_SONNET_4_20250514_V1_0",
+    "kiroAgent.configureMCP": "Enabled",
+    "workbench.settings.editor": "json",
+    "workbench.settings.enableNaturalLanguageSearch": true,
+    "testing.coverageToolbarEnabled": true,
+    "kiroAgent.enableDebugLogs": true,
+    "editor.cursorStyle": "underline-thin",
+    "php.validate.executablePath": "C:/php-8.1.31-/php.exe"
+}

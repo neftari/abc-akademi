@@ -1,0 +1,12 @@
+{
+    // Sadece Editor Ayarları
+    "editor.fontSize": 14,
+    "editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "off",
+    "editor.lineNumbers": "on",
+    "editor.minimap.enabled": true,
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false
+}

@@ -1,0 +1,64 @@
+[
+  {
+    "id": "2",
+    "name": "Ayşe Demir",
+    "email": "ayse@example.com",
+    "password": "hashed_password",
+    "phone": "555-0002",
+    "address": "Ankara",
+    "role": "student",
+    "status": "active",
+    "joinDate": "2024-01-20",
+    "assignedCourses": []
+  },
+  {
+    "id": "3",
+    "name": "Mehmet Kaya",
+    "email": "mehmet@example.com",
+    "password": "hashed_password",
+    "phone": "555-0003",
+    "address": "İzmir",
+    "role": "admin",
+    "status": "active",
+    "joinDate": "2024-01-10",
+    "assignedCourses": []
+  },
+  {
+    "id": "4",
+    "name": "Fatma Öz",
+    "email": "fatma@example.com",
+    "password": "hashed_password",
+    "phone": "555-0004",
+    "address": "Bursa",
+    "role": "student",
+    "status": "inactive",
+    "joinDate": "2024-01-25",
+    "assignedCourses": []
+  },
+  {
+    "name": "ben",
+    "email": "1@gmail.com",
+    "password": "98235ya.",
+    "phone": "",
+    "address": "",
+    "role": "student",
+    "status": "active",
+    "assignedCourses": [
+      "1752713705075"
+    ],
+    "id": "1752713748744",
+    "joinDate": "2025-07-17"
+  },
+  {
+    "id": "1753038749243",
+    "name": "yucel",
+    "email": "19yucel@windowslive.com",
+    "password": "98235Ya.",
+    "role": "student",
+    "phone": "",
+    "address": "",
+    "status": "active",
+    "joinDate": "2025-07-20",
+    "assignedCourses": []
+  }
+]

@@ -1,0 +1,23 @@
+{
+    "workbench.editor.enablePreviewFromCodeNavigation": true,
+    "workbench.editor.defaultBinaryEditor": "default",
+    "workbench.editor.scrollToSwitchTabs": true,
+    "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "workbench.editor.closeOnFileDelete": true,
+    "terminal.integrated.commandsToSkipShell": [
+        " MAİNTHREAWEBVİEW-BROWSER.VİEW"
+    ],
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "workbench.editor.autoLockGroups": {
+        "mainThreadWebview-markdown.preview": true,
+        "workbench.editors.gettingStartedInput": true,
+        "workbench.input.interactive": true
+    },
+    "kiroAgent.agentAutonomy": "Supervised",
+    "editor.columnSelection": true,
+    "kiroAgent.trustedCommands": [
+        "npm *",
+        "mkdir *",
+        "findstr *"
+    ]
+}
