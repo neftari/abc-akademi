@@ -15,10 +15,10 @@
       "args": ["-y", "@modelcontextprotocol/server-database"],
       "env": {
         "DB_TYPE": "mongodb",
-        "DB_URI": "mongodb://localhost:27017",
-        "DB_NAME": "abc-akademi"
+        "DB_URI": "mongodb+srv://abc-egitim:*98235Ya.*@abc-egitim.enskwzw.mongodb.net/?retryWrites=true&w=majority&appName=abc-egitim",
+        "DB_NAME": "abc-egitim"
       },
-      "disabled": false,
+      "disabled": true,
       "autoApprove": ["*"]
     },
     "git": {
@@ -66,7 +66,7 @@
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-vercel"],
       "env": {
-        "VERCEL_TOKEN": "your-vercel-token-here"
+        "VERCEL_TOKEN": "DY7lS3DK9TlLZMVoQgav1A0D"
       },
       "disabled": false,
       "autoApprove": ["*"]

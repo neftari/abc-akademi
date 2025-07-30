@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+  throw new Error('MONGODB_URI environment variable is not defined. Please check your .env.local file.');
 }
 
 declare global {
@@ -24,54 +24,100 @@ if (!cached) {
 }
 
 async function dbConnect() {
+  // Production ortamında log'ları azalt
+  const isProduction = process.env.NODE_ENV === 'production';
+  
   if (!cached) {
     cached = global.mongoose = { conn: null, promise: null };
   }
 
   if (cached.conn) {
-    console.log('Mevcut MongoDB bağlantısı kullanılıyor');
+    if (!isProduction) {
+      console.log('✅ Mevcut MongoDB bağlantısı kullanılıyor');
+    }
     return cached.conn;
   }
 
   if (!cached.promise) {
-    console.log('MongoDB URI kontrol ediliyor:', MONGODB_URI ? 'Mevcut' : 'Bulunamadı');
-    
     const opts = {
       bufferCommands: false,
       maxPoolSize: 10,
-      serverSelectionTimeoutMS: 10000, // 10 saniye
+      serverSelectionTimeoutMS: 15000, // 15 saniye (Vercel için artırıldı)
       socketTimeoutMS: 45000,
-      family: 4
+      connectTimeoutMS: 15000,
+      family: 4,
+      retryWrites: true,
+      w: 'majority'
     };
 
-    console.log('MongoDB bağlantı seçenekleri:', opts);
+    if (!isProduction) {
+      console.log('🔄 MongoDB Atlas\'a bağlanmaya çalışılıyor...');
+    }
 
     try {
-      console.log('MongoDB Atlas\'a bağlanmaya çalışılıyor...');
       cached.promise = mongoose.connect(MONGODB_URI!, opts);
       const mongooseInstance = await cached.promise;
-      console.log('MongoDB Atlas\'a başarıyla bağlandı!');
+      
+      if (!isProduction) {
+        console.log('✅ MongoDB Atlas\'a başarıyla bağlandı!');
+        console.log(`📊 Bağlantı durumu: ${mongoose.connection.readyState}`);
+        console.log(`🏷️ Veritabanı adı: ${mongoose.connection.name}`);
+      }
+      
       return mongooseInstance;
     } catch (error) {
-      console.error('MongoDB bağlantı hatası detayı:', {
-        message: error instanceof Error ? error.message : String(error),
-        name: error instanceof Error ? error.name : 'Unknown',
-        stack: error instanceof Error ? error.stack : undefined
-      });
       cached.promise = null;
-      throw new Error(`MongoDB Atlas'a bağlanılamadı: ${error instanceof Error ? error.message : String(error)}`);
+      
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error('❌ MongoDB bağlantı hatası:', {
+        message: errorMessage,
+        name: error instanceof Error ? error.name : 'Unknown',
+        uri: MONGODB_URI ? 'Mevcut' : 'Bulunamadı',
+        timestamp: new Date().toISOString()
+      });
+      
+      // Vercel için özel hata mesajları
+      if (errorMessage.includes('ENOTFOUND')) {
+        throw new Error('MongoDB Atlas sunucusuna ulaşılamıyor. DNS sorunu olabilir.');
+      } else if (errorMessage.includes('authentication failed')) {
+        throw new Error('MongoDB Atlas kimlik doğrulama hatası. Kullanıcı adı/şifre kontrol edin.');
+      } else if (errorMessage.includes('timeout')) {
+        throw new Error('MongoDB Atlas bağlantı zaman aşımı. Sunucu yavaş yanıt veriyor.');
+      }
+      
+      throw new Error(`MongoDB Atlas bağlantı hatası: ${errorMessage}`);
     }
   }
 
   try {
     cached.conn = await cached.promise;
+    return cached.conn;
   } catch (e) {
     cached.promise = null;
-    console.error('MongoDB bağlantısı başarısız:', e);
-    throw new Error(`MongoDB bağlantı hatası: ${e instanceof Error ? e.message : String(e)}`);
+    const errorMessage = e instanceof Error ? e.message : String(e);
+    console.error('❌ MongoDB bağlantı promise hatası:', errorMessage);
+    throw new Error(`MongoDB bağlantı hatası: ${errorMessage}`);
   }
+}
 
-  return cached.conn;
+// Bağlantı durumunu kontrol eden yardımcı fonksiyon
+export function getConnectionStatus(): string {
+  const states = {
+    0: 'disconnected',
+    1: 'connected',
+    2: 'connecting',
+    3: 'disconnecting'
+  };
+  return states[mongoose.connection.readyState as keyof typeof states] || 'unknown';
+}
+
+// Bağlantıyı temizle (test için)
+export async function disconnectDB() {
+  if (cached?.conn) {
+    await mongoose.disconnect();
+    cached.conn = null;
+    cached.promise = null;
+  }
 }
 
 export default dbConnect;
