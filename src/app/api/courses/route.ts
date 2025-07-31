@@ -36,10 +36,10 @@ export async function GET(request: NextRequest) {
     // Pagination hesapla
     const skip = (page - 1) * limit;
     
-    // Paralel sorgular
+    // Paralel sorgular - sadece mağaza için gerekli alanlar
     const [courses, totalCount] = await Promise.all([
       Course.find(filter)
-        .select('title description price duration category instructor image students rating status createdAt')
+        .select('title price duration category instructor image rating level createdAt')
         .sort({ createdAt: -1 })
         .skip(skip)
         .limit(limit)
