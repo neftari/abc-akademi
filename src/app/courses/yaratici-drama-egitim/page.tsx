@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { 
   Clock, 
   Users, 
@@ -206,7 +206,7 @@ export default function YaraticiDramaEgitimPage() {
   const [totalPrice, setTotalPrice] = useState(courseData.discountedPrice);
 
   // Dinamik fiyat hesaplama
-  const calculateTotalPrice = () => {
+  const calculateTotalPrice = useCallback(() => {
     let total = courseData.discountedPrice;
     
     // Sertifika türlerine göre fiyat ekle
@@ -226,12 +226,12 @@ export default function YaraticiDramaEgitimPage() {
     });
     
     return total;
-  };
+  }, [selectedCertificateTypes, selectedExtras]);
 
   // TotalPrice'ı güncelle
   useEffect(() => {
     setTotalPrice(calculateTotalPrice());
-  }, [selectedCertificateTypes, selectedExtras]);
+  }, [selectedCertificateTypes, selectedExtras, calculateTotalPrice]);
   const [expandedModule, setExpandedModule] = useState<number | null>(null);
 
   const certificateOptions = [
@@ -629,7 +629,7 @@ export default function YaraticiDramaEgitimPage() {
                     %49 İndirim
                   </span>
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-1">₺{calculateTotalPrice()}</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">₺{totalPrice}</div>
                 <div className="text-sm text-gray-500">KDV Dahil</div>
               </div>
               

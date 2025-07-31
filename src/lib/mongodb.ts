@@ -45,9 +45,7 @@ async function dbConnect() {
       serverSelectionTimeoutMS: 15000, // 15 saniye (Vercel için artırıldı)
       socketTimeoutMS: 45000,
       connectTimeoutMS: 15000,
-      family: 4,
-      retryWrites: true,
-      w: 'majority'
+      family: 4
     };
 
     if (!isProduction) {

@@ -15,7 +15,14 @@ export async function GET(request: NextRequest) {
     const status = searchParams.get('status') || 'active';
     
     // Filter objesi oluştur
-    const filter: any = { isDeleted: { $ne: true } };
+    interface FilterType {
+      isDeleted: { $ne: boolean };
+      status?: string;
+      category?: string;
+      $or?: Array<{ title: { $regex: string; $options: string } } | { instructor: { $regex: string; $options: string } }>;
+    }
+    
+    const filter: FilterType = { isDeleted: { $ne: true } };
     
     if (status) {
       filter.status = status;
@@ -28,7 +35,6 @@ export async function GET(request: NextRequest) {
     if (search) {
       filter.$or = [
         { title: { $regex: search, $options: 'i' } },
-        { description: { $regex: search, $options: 'i' } },
         { instructor: { $regex: search, $options: 'i' } }
       ];
     }
@@ -81,7 +87,7 @@ export async function POST(request: NextRequest) {
     let body;
     try {
       body = await request.json();
-    } catch (parseError) {
+    } catch {
       return NextResponse.json({
         success: false,
         error: 'Geçersiz JSON formatı'
@@ -93,8 +99,8 @@ export async function POST(request: NextRequest) {
     
     const requiredFields = { title, description, content, price, duration, category, instructor };
     const missingFields = Object.entries(requiredFields)
-      .filter(([_, value]) => !value && value !== 0)
-      .map(([key, _]) => key);
+      .filter(([, value]) => !value && value !== 0)
+      .map(([key]) => key);
     
     if (missingFields.length > 0) {
       return NextResponse.json({

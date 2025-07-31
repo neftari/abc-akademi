@@ -370,22 +370,32 @@ export default function AdminDashboard() {
   // Arama fonksiyonları
   const handleGlobalSearch = (term: string) => {
     setSearchTerm(term);
+    // Global arama implementasyonu
+    console.log('Global arama:', term);
   };
 
   const handleUserSearch = (term: string) => {
     setUserSearchTerm(term);
+    // Kullanıcı arama implementasyonu
+    console.log('Kullanıcı arama:', term);
   };
 
   const handleCategorySearch = (term: string) => {
     setCategorySearchTerm(term);
+    // Kategori arama implementasyonu
+    console.log('Kategori arama:', term);
   };
 
   const handleCourseSearch = (term: string) => {
     setCourseSearchTerm(term);
+    // Kurs arama implementasyonu
+    console.log('Kurs arama:', term);
   };
 
   const handleCertificateSearch = (term: string) => {
     setCertificateSearchTerm(term);
+    // Sertifika arama implementasyonu
+    console.log('Sertifika arama:', term);
   };
 
   const resetForms = () => {
@@ -1113,20 +1123,10 @@ export default function AdminDashboard() {
     user.email.toLowerCase().includes(userSearchTerm.toLowerCase())
   );
 
-  const filteredCategories = categories.filter(category =>
-    category.name.toLowerCase().includes(categorySearchTerm.toLowerCase()) ||
-    category.description.toLowerCase().includes(categorySearchTerm.toLowerCase())
-  );
-
   const filteredCourses = courses.filter(course =>
     course.title.toLowerCase().includes(courseSearchTerm.toLowerCase()) ||
     course.category.toLowerCase().includes(courseSearchTerm.toLowerCase()) ||
     course.instructor.toLowerCase().includes(courseSearchTerm.toLowerCase())
-  );
-
-  const filteredCertificates = certificates.filter(cert =>
-    cert.studentName.toLowerCase().includes(certificateSearchTerm.toLowerCase()) ||
-    cert.courseName.toLowerCase().includes(certificateSearchTerm.toLowerCase())
   );
 
   // Ayarlar işlemleri
