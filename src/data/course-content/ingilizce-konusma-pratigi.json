@@ -1,0 +1,172 @@
+{
+  "courseId": "ingilizce-konusma-pratigi",
+  "title": "İngilizce Konuşma Pratiği Eğitimi",
+  "modules": [
+    {
+      "id": "modul-1",
+      "title": "Temel Konuşma Kalıpları",
+      "description": "Günlük hayatta kullanılan temel İngilizce konuşma kalıpları",
+      "lessons": [
+        {
+          "id": "ders-1-1",
+          "title": "Selamlaşma ve Tanışma",
+          "type": "text",
+          "duration": "20 dakika",
+          "completed": false,
+          "content": {
+            "learningObjectives": [
+              "Günlük selamlaşma kalıplarını öğrenmek",
+              "Tanışma diyaloglarını anlamak",
+              "Resmi ve samimi konuşma farklarını kavramak"
+            ],
+            "mainContent": {
+              "sections": [
+                {
+                  "title": "Resmi Selamlaşma",
+                  "content": "Resmi ortamlarda kullanılan selamlaşma kalıpları: Good morning (Günaydın), Good afternoon (İyi öğleden sonra), Good evening (İyi akşamlar), Good night (İyi geceler)."
+                },
+                {
+                  "title": "Samimi Selamlaşma",
+                  "content": "Günlük hayatta kullanılan samimi selamlaşma kalıpları: Hi (Merhaba), Hello (Merhaba), Hey (Hey), What's up? (Ne haber?)."
+                },
+                {
+                  "title": "Tanışma Diyalogları",
+                  "content": "İlk tanışma sırasında kullanılan kalıplar: What's your name? (Adınız nedir?), Where are you from? (Neredensiniz?), Nice to meet you (Tanıştığımıza memnun oldum)."
+                }
+              ]
+            },
+            "practicalExamples": [
+              {
+                "title": "İş Ortamında Tanışma",
+                "description": "Yeni iş arkadaşıyla tanışma diyaloğu",
+                "dialogue": {
+                  "A": "Hi, I'm Alex. I'm new here.",
+                  "B": "Welcome, Alex! I'm Maria.",
+                  "A": "Nice to meet you, Maria.",
+                  "B": "Nice to meet you too. What department are you in?",
+                  "A": "I'm in marketing. How about you?",
+                  "B": "I'm in sales. Let me show you around."
+                }
+              }
+            ],
+            "importantNotes": [
+              "Resmi ortamlarda samimi dil kullanmayın",
+              "İsimleri doğru telaffuz edin",
+              "Göz teması kurun",
+              "Gülümseyin ve sıcak olun"
+            ],
+            "summary": "Bu derste günlük selamlaşma kalıplarını, tanışma diyaloglarını ve resmi/samimi konuşma farklarını öğrendik."
+          }
+        },
+        {
+          "id": "ders-1-2",
+          "title": "Günlük Hayat Diyalogları",
+          "type": "text",
+          "duration": "25 dakika",
+          "completed": false,
+          "content": {
+            "learningObjectives": [
+              "Günlük aktiviteler hakkında konuşmayı öğrenmek",
+              "Hava durumu diyaloglarını anlamak",
+              "Hobiler ve ilgi alanları hakkında konuşmayı kavramak"
+            ],
+            "mainContent": {
+              "sections": [
+                {
+                  "title": "Günlük Aktivite Kalıpları",
+                  "content": "Sabah rutini: I wake up at... (Uyanırım), I get up at... (Kalkarım), I take a shower (Duş alırım), I have breakfast (Kahvaltı yaparım), I go to work/school (İşe/okula giderim)."
+                },
+                {
+                  "title": "Hava Durumu Diyalogları",
+                  "content": "Hava durumu hakkında konuşma: What's the weather like today? (Bugün hava nasıl?), It's sunny (Güneşli), It's cloudy (Bulutlu), It's raining (Yağmur yağıyor)."
+                },
+                {
+                  "title": "Hobiler ve İlgi Alanları",
+                  "content": "Hobiler hakkında konuşma: I like to... (... yapmayı severim), I enjoy... (...'dan hoşlanırım), My hobby is... (Hobim ...)."
+                }
+              ]
+            },
+            "practicalExamples": [
+              {
+                "title": "Günlük Rutin Anlatma",
+                "description": "Kendi günlük rutininizi anlatma",
+                "dialogue": {
+                  "A": "What time do you usually wake up?",
+                  "B": "I wake up at 7 AM every day.",
+                  "A": "Do you have breakfast at home?",
+                  "B": "Yes, I usually have coffee and toast.",
+                  "A": "What time do you leave for work?",
+                  "B": "I leave at 8:30 AM."
+                }
+              }
+            ],
+            "importantNotes": [
+              "Günlük konuşmalarda kısa cümleler kullanın",
+              "Doğal ve samimi olun",
+              "Aktif dinleyici olun",
+              "İlgi gösterin ve sorular sorun"
+            ],
+            "summary": "Bu derste günlük aktiviteler, hava durumu ve hobiler hakkında konuşma kalıplarını öğrendik."
+          }
+        }
+      ]
+    },
+    {
+      "id": "modul-2",
+      "title": "İş Dünyası İletişimi",
+      "description": "İş ortamında kullanılan profesyonel İngilizce kalıpları",
+      "lessons": [
+        {
+          "id": "ders-2-1",
+          "title": "Toplantı ve Sunum İngilizcesi",
+          "type": "text",
+          "duration": "30 dakika",
+          "completed": false,
+          "content": {
+            "learningObjectives": [
+              "Toplantı başlatma kalıplarını öğrenmek",
+              "Sunum yapma tekniklerini anlamak",
+              "İş görüşmesi kalıplarını kavramak"
+            ],
+            "mainContent": {
+              "sections": [
+                {
+                  "title": "Toplantı Başlatma",
+                  "content": "Toplantı başlatma kalıpları: Let's get started (Başlayalım), I'd like to welcome everyone (Herkese hoş geldiniz demek istiyorum), The purpose of this meeting is... (Bu toplantının amacı ...)."
+                },
+                {
+                  "title": "Sunum Yapma",
+                  "content": "Sunum kalıpları: Today I'm going to talk about... (Bugün ... hakkında konuşacağım), Let me start by... (... ile başlayayım), As you can see... (Gördüğünüz gibi ...)."
+                },
+                {
+                  "title": "İş Görüşmesi",
+                  "content": "İş görüşmesi kalıpları: Tell me about yourself (Kendinizden bahsedin), What are your strengths? (Güçlü yanlarınız nelerdir?), Why do you want this job? (Bu işi neden istiyorsunuz?)."
+                }
+              ]
+            },
+            "practicalExamples": [
+              {
+                "title": "Toplantı Diyaloğu",
+                "description": "İş toplantısında kullanılan kalıplar",
+                "dialogue": {
+                  "A": "Good morning everyone. Let's get started.",
+                  "B": "Thank you for organizing this meeting.",
+                  "A": "Today we're going to discuss the new project.",
+                  "B": "I have some questions about the timeline.",
+                  "A": "Please go ahead with your questions."
+                }
+              }
+            ],
+            "importantNotes": [
+              "Resmi dil kullanın",
+              "Açık ve net konuşun",
+              "Dinleyicilerle göz teması kurun",
+              "Hazırlıklı olun"
+            ],
+            "summary": "Bu derste iş dünyasında kullanılan profesyonel İngilizce kalıplarını öğrendik."
+          }
+        }
+      ]
+    }
+  ]
+} 

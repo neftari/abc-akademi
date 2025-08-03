@@ -271,9 +271,17 @@ export default function CourseDetailPage() {
                 <div className="text-sm text-gray-500">Tek seferlik ödeme</div>
               </div>
               
-              <button className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors mb-4">
-                Kursa Kayıt Ol
-              </button>
+              <div className="space-y-3">
+                <Link 
+                  href={`/courses/${params.id}/learn`}
+                  className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors block text-center"
+                >
+                  Eğitime Başla
+                </Link>
+                <button className="w-full bg-gray-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-gray-700 transition-colors">
+                  Kursa Kayıt Ol
+                </button>
+              </div>
               
               <div className="space-y-4 text-sm">
                 <div className="flex items-center justify-between">

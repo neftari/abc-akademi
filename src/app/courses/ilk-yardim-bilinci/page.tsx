@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { 
   Clock, 
   ArrowLeft, 
@@ -146,44 +146,19 @@ export default function IlkYardimBilinciPage() {
   const [selectedExtras, setSelectedExtras] = useState<string[]>([]);
   const [activeSection, setActiveSection] = useState('modules');
   // const [quantity, setQuantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(courseData.discountedPrice);
-
-  // Dinamik fiyat hesaplama
-  const calculateTotalPrice = useCallback(() => {
-    let total = courseData.discountedPrice;
-    
-    // Sertifika seçenekleri fiyatlarını ekle
-    selectedCertificateTypes.forEach(certId => {
-      const cert = certificateOptions.find(c => c.id === certId);
-      if (cert) total += cert.price;
-    });
-    
-    // Ekstra seçenekleri fiyatlarını ekle
-    selectedExtras.forEach(extraId => {
-      const extra = extraOptions.find(e => e.id === extraId);
-      if (extra) total += extra.price;
-    });
-    
-    return total;
-  }, [selectedCertificateTypes, selectedExtras]);
-
-  // TotalPrice'ı güncelle
-  useEffect(() => {
-    setTotalPrice(calculateTotalPrice());
-  }, [selectedCertificateTypes, selectedExtras, calculateTotalPrice]);
   const [expandedModule, setExpandedModule] = useState<number | null>(null);
 
-  const certificateOptions = [
+  const certificateOptions = useMemo(() => [
     { id: 'university', name: 'e-Devlet & Üniversite Sertifikası', price: 0 },
     { id: 'international-en', name: 'Uluslararası İngilizce Sertifika', price: 50 },
     { id: 'international-tr', name: 'Uluslararası Türkçe Sertifika', price: 50 }
-  ];
+  ], []);
 
-  const extraOptions = [
+  const extraOptions = useMemo(() => [
     { id: 'print-certificate', name: 'Sertifikayı Basın ve Kargolayın', price: 125 },
     { id: 'first-aid-kit', name: 'İlk Yardım Çantası (Bonus)', price: 199 },
     { id: 'mobile-app', name: 'Mobil Uygulama Erişimi', price: 49 }
-  ];
+  ], []);
 
   const sections = [
     { id: 'modules', title: 'Eğitim Modülleri', icon: List },
@@ -208,7 +183,28 @@ export default function IlkYardimBilinciPage() {
     }
   };
 
-
+  // Dinamik fiyat hesaplama
+  const calculateTotalPrice = useCallback(() => {
+    let total = courseData.discountedPrice;
+    
+    // Sertifika türlerine göre fiyat ekle
+    selectedCertificateTypes.forEach(certType => {
+      const option = certificateOptions.find(opt => opt.id === certType);
+      if (option) {
+        total += option.price;
+      }
+    });
+    
+    // Ek hizmetlere göre fiyat ekle
+    selectedExtras.forEach(extra => {
+      const option = extraOptions.find(opt => opt.id === extra);
+      if (option) {
+        total += option.price;
+      }
+    });
+    
+    return total;
+  }, [selectedCertificateTypes, selectedExtras, certificateOptions, extraOptions]);
 
   const toggleModule = (moduleId: number) => {
     setExpandedModule(expandedModule === moduleId ? null : moduleId);
@@ -441,7 +437,7 @@ export default function IlkYardimBilinciPage() {
                     %50 İndirim
                   </span>
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-1">₺{totalPrice}</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">₺{calculateTotalPrice()}</div>
                 <div className="text-sm text-gray-500">KDV Dahil</div>
               </div>
               

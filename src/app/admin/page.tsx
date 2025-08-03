@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
+
 import {
   Users,
   BookOpen,
@@ -24,11 +25,12 @@ import {
   Tag,
   CheckCircle
 } from 'lucide-react';
+
 import { courseAPI, userAPI, categoryAPI, certificateAPI, settingsAPI } from '@/lib/api';
-import { IUser } from '@/models/User';
-import { ICourse } from '@/models/Course';
 import { ICategory } from '@/models/Category';
 import { ICertificate } from '@/models/Certificate';
+import { ICourse } from '@/models/Course';
+import { IUser } from '@/models/User';
 
 interface SalesPage {
   id: string;
@@ -98,7 +100,6 @@ function Toast({ show, message, type }: { show: boolean; message: string; type: 
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('overview');
-  const [searchTerm, setSearchTerm] = useState('');
   const [userSearchTerm, setUserSearchTerm] = useState('');
   const [categorySearchTerm, setCategorySearchTerm] = useState('');
   const [courseSearchTerm, setCourseSearchTerm] = useState('');
@@ -368,35 +369,7 @@ export default function AdminDashboard() {
   };
 
   // Arama fonksiyonları
-  const handleGlobalSearch = (term: string) => {
-    setSearchTerm(term);
-    // Global arama implementasyonu
-    console.log('Global arama:', term);
-  };
 
-  const handleUserSearch = (term: string) => {
-    setUserSearchTerm(term);
-    // Kullanıcı arama implementasyonu
-    console.log('Kullanıcı arama:', term);
-  };
-
-  const handleCategorySearch = (term: string) => {
-    setCategorySearchTerm(term);
-    // Kategori arama implementasyonu
-    console.log('Kategori arama:', term);
-  };
-
-  const handleCourseSearch = (term: string) => {
-    setCourseSearchTerm(term);
-    // Kurs arama implementasyonu
-    console.log('Kurs arama:', term);
-  };
-
-  const handleCertificateSearch = (term: string) => {
-    setCertificateSearchTerm(term);
-    // Sertifika arama implementasyonu
-    console.log('Sertifika arama:', term);
-  };
 
   const resetForms = () => {
     setUserForm({ name: '', email: '', password: '', phone: '', address: '', role: 'student', status: 'active', assignedCourses: [] });
@@ -761,36 +734,7 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleEditSalesPage = (salesPage: SalesPage) => {
-    setEditingSalesPage(salesPage);
-    setSalesPageForm({
-      title: salesPage.title,
-      subtitle: salesPage.subtitle || '',
-      originalPrice: salesPage.originalPrice.toString(),
-      discountedPrice: salesPage.discountedPrice.toString(),
-      description: salesPage.description,
-      longDescription: salesPage.longDescription || '',
-      features: salesPage.features || [''],
-      startInfo: salesPage.startInfo || '',
-      contactInfo: salesPage.contactInfo || '',
-      additionalInfo: salesPage.additionalInfo || '',
-      categories: salesPage.categories || [''],
-      certificateOptions: salesPage.certificateOptions || [{ id: '', name: '', price: 0, selected: false }],
-      extraOptions: salesPage.extraOptions || [{ id: '', name: '', price: 0, selected: false }],
-      relatedCourses: salesPage.relatedCourses || [''],
-      status: salesPage.status || 'active',
-      headerImage: salesPage.headerImage || '',
-      middleImage: salesPage.middleImage || '',
-      bottomImage: salesPage.bottomImage || '',
-      sections: {
-        summary: salesPage.sections?.summary || '',
-        about: salesPage.sections?.about || '',
-        startInfo: salesPage.sections?.startInfo || '',
-        contactInfo: salesPage.sections?.contactInfo || ''
-      }
-    });
-    setShowSalesPageModal(true);
-  };
+
 
   const handleUpdateSalesPage = async () => {
     if (!editingSalesPage) return;

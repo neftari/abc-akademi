@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { 
   BookOpen, 
   Clock, 
@@ -193,7 +193,20 @@ export default function IngilizceKonusmaPratigiPage() {
   const [selectedExtras, setSelectedExtras] = useState<string[]>([]);
   const [activeSection, setActiveSection] = useState('modules');
   // const [quantity, setQuantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(courseData.discountedPrice);
+  const [expandedModule, setExpandedModule] = useState<number | null>(null);
+
+  const certificateOptions = useMemo(() => [
+    { id: 'university', name: 'e-Devlet & Üniversite Sertifikası', price: 0 },
+    { id: 'international-en', name: 'Uluslararası İngilizce Sertifika', price: 50 },
+    { id: 'cambridge-style', name: 'Cambridge Tarzı Sertifika', price: 75 }
+  ], []);
+
+  const extraOptions = useMemo(() => [
+    { id: 'print-certificate', name: 'Sertifikayı Basın ve Kargolayın', price: 125 },
+    { id: 'pronunciation-guide', name: 'Sesli Telaffuz Rehberi', price: 99 },
+    { id: 'mobile-app', name: 'Mobil Uygulama Erişimi', price: 49 },
+    { id: 'conversation-book', name: 'Basılı Konuşma Kitabı', price: 149 }
+  ], []);
 
   // Dinamik fiyat hesaplama
   const calculateTotalPrice = useCallback(() => {
@@ -216,26 +229,7 @@ export default function IngilizceKonusmaPratigiPage() {
     });
     
     return total;
-  }, [selectedCertificateTypes, selectedExtras]);
-
-  // TotalPrice'ı güncelle
-  useEffect(() => {
-    setTotalPrice(calculateTotalPrice());
-  }, [selectedCertificateTypes, selectedExtras, calculateTotalPrice]);
-  const [expandedModule, setExpandedModule] = useState<number | null>(null);
-
-  const certificateOptions = [
-    { id: 'university', name: 'e-Devlet & Üniversite Sertifikası', price: 0 },
-    { id: 'international-en', name: 'Uluslararası İngilizce Sertifika', price: 50 },
-    { id: 'cambridge-style', name: 'Cambridge Tarzı Sertifika', price: 75 }
-  ];
-
-  const extraOptions = [
-    { id: 'print-certificate', name: 'Sertifikayı Basın ve Kargolayın', price: 125 },
-    { id: 'pronunciation-guide', name: 'Sesli Telaffuz Rehberi', price: 99 },
-    { id: 'mobile-app', name: 'Mobil Uygulama Erişimi', price: 49 },
-    { id: 'conversation-book', name: 'Basılı Konuşma Kitabı', price: 149 }
-  ];
+  }, [selectedCertificateTypes, selectedExtras, certificateOptions, extraOptions]);
 
   const sections = [
     { id: 'modules', title: 'Konuşma Modülleri', icon: MessageCircle },
@@ -578,7 +572,7 @@ export default function IngilizceKonusmaPratigiPage() {
                     %50 İndirim
                   </span>
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-1">₺{totalPrice}</div>
+                <div className="text-3xl font-bold text-gray-900 mb-1">₺{calculateTotalPrice()}</div>
                 <div className="text-sm text-gray-500">KDV Dahil</div>
               </div>
               

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Course from '@/models/Course';
+import { withRateLimit, rateLimiters } from '@/lib/rate-limiter';
 
 export async function GET(
   request: NextRequest,
@@ -57,7 +58,7 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
+async function deleteCourse(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -85,4 +86,6 @@ export async function DELETE(
     console.error('Error deleting course:', error);
     return NextResponse.json({ error: 'Kurs silinirken hata oluştu' }, { status: 500 });
   }
-} 
+}
+
+export const DELETE = withRateLimit(rateLimiters.admin)(deleteCourse); 

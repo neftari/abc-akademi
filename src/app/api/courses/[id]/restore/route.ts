@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Course from '@/models/Course';
+import { withRateLimit, rateLimiters } from '@/lib/rate-limiter';
 
-export async function POST(
+async function restoreCourse(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
@@ -37,3 +38,5 @@ export async function POST(
     }, { status: 500 });
   }
 }
+
+export const POST = withRateLimit(rateLimiters.admin)(restoreCourse);

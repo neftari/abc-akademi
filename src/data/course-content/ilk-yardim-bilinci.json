@@ -1,0 +1,164 @@
+{
+  "courseId": "ilk-yardim-bilinci",
+  "title": "İlk Yardım Bilinci Eğitimi",
+  "modules": [
+    {
+      "id": "modul-1",
+      "title": "Temel İlk Yardım Bilgisi",
+      "description": "İlk yardımın temel kavramları ve prensipleri",
+      "lessons": [
+        {
+          "id": "ders-1-1",
+          "title": "İlk Yardım Nedir?",
+          "type": "text",
+          "duration": "15 dakika",
+          "completed": false,
+          "content": {
+            "learningObjectives": [
+              "İlk yardımın tanımını öğrenmek",
+              "İlk yardımın önemini anlamak",
+              "İlk yardımın temel prensiplerini kavramak"
+            ],
+            "mainContent": {
+              "sections": [
+                {
+                  "title": "İlk Yardımın Tanımı",
+                  "content": "İlk yardım, herhangi bir kaza veya yaşamı tehlikeye düşüren bir durumda, sağlık görevlilerinin yardımı sağlanıncaya kadar, hayatın kurtarılması ya da durumun kötüleşmesini önlemek amacıyla, olay yerinde, tıbbi araç gereç aranmaksızın mevcut araç ve gereçlerle yapılan ilaçsız uygulamaları kapsar."
+                },
+                {
+                  "title": "İlk Yardımın Önemi",
+                  "content": "İlk yardım, acil durumlarda hayat kurtarma ve durumun kötüleşmesini önleme açısından kritik öneme sahiptir. Doğru müdahale ile yaralanmaların şiddeti azalır, enfeksiyon riski önlenir ve kalıcı sakatlık riski azalır."
+                },
+                {
+                  "title": "Temel Prensipler",
+                  "content": "İlk yardımın temel prensipleri: güvenlik önceliği, hızlı değerlendirme ve doğru müdahaledir. Önce kendi güvenliğinizi sağlamalı, sonra bilinç durumunu kontrol etmeli ve doğru müdahaleyi yapmalısınız."
+                }
+              ]
+            },
+            "practicalExamples": [
+              {
+                "title": "Trafik Kazası Senaryosu",
+                "description": "Yolda araç kazası gören bir yayanın yapması gerekenler",
+                "steps": [
+                  "Güvenli bir mesafeden durun",
+                  "112'yi arayın",
+                  "Kazazedelerin bilinç durumunu kontrol edin",
+                  "Kanama varsa basınç uygulayın"
+                ]
+              }
+            ],
+            "importantNotes": [
+              "İlk yardım bilgisi olmadan müdahale etmeyin",
+              "Her zaman profesyonel yardım çağırın",
+              "Kendi güvenliğinizi öncelikli tutun"
+            ],
+            "summary": "Bu derste ilk yardımın ne olduğunu, önemini ve temel prensiplerini öğrendik. İlk yardım, hayat kurtarma ve durumun kötüleşmesini önleme amacıyla yapılan acil müdahalelerdir."
+          }
+        },
+        {
+          "id": "ders-1-2",
+          "title": "ABC Prensibi",
+          "type": "text",
+          "duration": "20 dakika",
+          "completed": false,
+          "content": {
+            "learningObjectives": [
+              "ABC prensibini öğrenmek",
+              "Hava yolu kontrolünü anlamak",
+              "Solunum ve dolaşım kontrolünü kavramak"
+            ],
+            "mainContent": {
+              "sections": [
+                {
+                  "title": "A - Airway (Hava Yolu)",
+                  "content": "Hava yolunun açık olup olmadığını kontrol edin. Bilinçsiz kişilerde dil arkaya kayabilir, yabancı cisim tıkanıklığı olabilir. Boyun travması varsa dikkatli olun."
+                },
+                {
+                  "title": "B - Breathing (Solunum)",
+                  "content": "Solunumun olup olmadığını kontrol edin. Göğüs hareketlerini gözlemleyin, solunum sesini dinleyin, yanakla solunum hissini alın."
+                },
+                {
+                  "title": "C - Circulation (Dolaşım)",
+                  "content": "Dolaşımın olup olmadığını kontrol edin. Nabız kontrolü yapın, cilt rengini gözlemleyin, kanama kontrolü yapın."
+                }
+              ]
+            },
+            "practicalExamples": [
+              {
+                "title": "Bilinç Kontrolü Uygulaması",
+                "description": "Bilinçsiz bir kişiye yaklaşım",
+                "steps": [
+                  "Kişinin yanına diz çökün",
+                  "Omuzlarından hafifçe sarsın",
+                  "'İyi misiniz?' diye sorun",
+                  "Yanıt yoksa bilinçsiz kabul edin"
+                ]
+              }
+            ],
+            "importantNotes": [
+              "ABC sırasını değiştirmeyin",
+              "Her aşamada 10 saniye bekleyin",
+              "Yanlış değerlendirme yapmayın"
+            ],
+            "summary": "ABC prensibi ilk yardımın temelidir. Hava yolu, solunum ve dolaşım sırasıyla kontrol edilmelidir."
+          }
+        }
+      ]
+    },
+    {
+      "id": "modul-2",
+      "title": "CPR ve Temel Yaşam Desteği",
+      "description": "Kalp-akciğer canlandırması ve temel yaşam desteği teknikleri",
+      "lessons": [
+        {
+          "id": "ders-2-1",
+          "title": "CPR Nedir?",
+          "type": "text",
+          "duration": "25 dakika",
+          "completed": false,
+          "content": {
+            "learningObjectives": [
+              "CPR'ın tanımını öğrenmek",
+              "CPR'ın ne zaman uygulanacağını anlamak",
+              "CPR'ın önemini kavramak"
+            ],
+            "mainContent": {
+              "sections": [
+                {
+                  "title": "CPR Tanımı",
+                  "content": "CPR (Cardiopulmonary Resuscitation), kalp durması durumunda uygulanan acil müdahale tekniğidir. Kalp masajı ve suni teneffüs kombinasyonu ile beyne oksijen gitmesini sağlar."
+                },
+                {
+                  "title": "CPR'ın Önemi",
+                  "content": "Kalp durması durumunda 3-5 dakika içinde müdahale edilmezse beyin hasarı başlar. CPR ile bu süre uzatılabilir ve hayat kurtarılabilir."
+                },
+                {
+                  "title": "CPR Endikasyonları",
+                  "content": "CPR şu durumlarda uygulanır: bilinç kaybı, solunum yok, nabız yok. Bu üç kriter varsa hemen CPR başlatılmalıdır."
+                }
+              ]
+            },
+            "practicalExamples": [
+              {
+                "title": "CPR Başlatma Kararı",
+                "description": "CPR'ın ne zaman başlatılacağına karar verme",
+                "steps": [
+                  "Bilinç kontrolü yapın",
+                  "Solunum kontrolü yapın",
+                  "Nabız kontrolü yapın",
+                  "Üçü de yoksa CPR başlatın"
+                ]
+              }
+            ],
+            "importantNotes": [
+              "CPR'ı sadece gerekli durumlarda uygulayın",
+              "112'yi mutlaka arayın",
+              "CPR'ı bırakmayın"
+            ],
+            "summary": "CPR, kalp durması durumunda uygulanan hayat kurtarıcı bir tekniktir."
+          }
+        }
+      ]
+    }
+  ]
+} 

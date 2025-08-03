@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Course from '@/models/Course';
+import { withRateLimit, rateLimiters } from '@/lib/rate-limiter';
 
-export async function GET() {
+async function getDeletedCourses() {
   try {
     await dbConnect();
     
@@ -23,3 +24,5 @@ export async function GET() {
     }, { status: 500 });
   }
 }
+
+export const GET = withRateLimit(rateLimiters.admin)(getDeletedCourses);
